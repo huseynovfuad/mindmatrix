@@ -1,0 +1,7 @@
+<h1>{{ puzzle.title }}</h1>
+<hr>
+
+{% for piece in puzzle.puzzleimage_set.all %}
+<img src="{{ piece.image.url }}" alt="" style="width: 100px;height: 100px;">
+<hr>
+{% endfor %}

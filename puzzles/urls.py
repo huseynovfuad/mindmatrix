@@ -4,5 +4,6 @@ from . import views
 app_name = "puzzles"
 
 urlpatterns = [
+    path("", views.puzzle_view, name="index"),
     path("get/", views.PuzzleView.as_view(), name="get-puzzle"),
 ]
