@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-22t38kk56q#n_s$s9=5p#(e=$z&v35j5!3n8t3ciio%8013+md
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -30,6 +30,7 @@ BUILTIN_APPS = [
 
 LOCAL_APPS = [
     "users",
+    "puzzles"
 ]
 
 THIRD_PARTY_APPS = [
