@@ -92,3 +92,11 @@ class AvatarSerializer(serializers.ModelSerializer):
         user.avatar = avatar
         user.save()
         return user
+
+
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("id", "username", "avatar")
