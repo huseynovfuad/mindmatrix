@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-22t38kk56q#n_s$s9=5p#(e=$z&v35j5!3n8t3ciio%8013+md'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["fuadhuseynov.pythonanywhere.com", "*"]
 
@@ -30,7 +30,8 @@ BUILTIN_APPS = [
 
 LOCAL_APPS = [
     "users",
-    "puzzles"
+    "mainapp",
+    "puzzles",
 ]
 
 THIRD_PARTY_APPS = [

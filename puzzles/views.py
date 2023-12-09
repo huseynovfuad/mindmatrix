@@ -1,18 +1,27 @@
 from rest_framework import generics
-from .models import Puzzle, PuzzleImage
-from .serializers import PuzzleSerializer
+from .serializers import PuzzleCheckSerializer
+from .models import Puzzle, PuzzleImage, PuzzleResult
+from rest_framework.response import Response
 
 
-class PuzzleView(generics.RetrieveAPIView):
-    serializer_class = PuzzleSerializer
+class PuzzleCheckView(generics.CreateAPIView):
+    queryset = PuzzleResult.objects.all()
+    serializer_class = PuzzleCheckSerializer
 
-    def get_object(self):
-        return Puzzle.objects.order_by("?").first()
+    def post(self, request, *args, **kwargs):
+        result = request.data.get("result")
+        serializer = self.serializer_class(data=request.data, context={"result": result})
+        serializer.is_valid(raise_exception=True)
+        return Response({"is_ok": True}, status=201)
 
 
+class PuzzleSubmitView(generics.CreateAPIView):
+    queryset = PuzzleResult.objects.all()
+    serializer_class = PuzzleCheckSerializer
 
-from django.shortcuts import render
-def puzzle_view(request, id):
-    puzzle = Puzzle.objects.get(id=id)
-    context = {"puzzle": puzzle}
-    return render(request, "index.html", context)
+    def post(self, request, *args, **kwargs):
+        result = request.data.get("result")
+        serializer = self.serializer_class(data=request.data, context={"result": result, "user": request.user})
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"is_ok": True}, status=201)
