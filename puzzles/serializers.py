@@ -18,7 +18,7 @@ class PuzzleImageSerializer(serializers.ModelSerializer):
 class PuzzleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Puzzle
-        fields = ("id", "title", "image",)
+        fields = ("id", "title", "image", "row", "column")
 
 
     def to_representation(self, instance):

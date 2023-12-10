@@ -54,22 +54,3 @@ class PuzzleResult(models.Model):
 
     class Meta:
         verbose_name_plural = "Puzzle Result"
-
-
-    def save(self, *args, **kwargs):
-        super().save()
-
-        img = Image.open(self.image.path)  # Open image using self
-
-        height = img.height
-        if height > 600:
-            height = 600
-
-        width = img.width
-        if width > 900:
-            width = 900
-
-        new_img = (width, height)
-        img.thumbnail(new_img)
-        img.save(self.image.path)
-        super().save()
