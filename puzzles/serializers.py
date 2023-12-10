@@ -59,6 +59,7 @@ class PuzzleCheckSerializer(serializers.ModelSerializer):
 
         print(result)
         print(correct)
+        print(type(result), type(correct))
         print(result == correct)
         if result != correct:
             raise serializers.ValidationError({"error": "Wrong ordering"})
