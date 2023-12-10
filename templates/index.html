@@ -4,7 +4,7 @@
 <hr>
 
     {% for index, obj in images %}
-        <img src="{{ obj.image.url }}" alt="" style="width: 100px;height: 100px;">
+        <img src="{{ obj.image.url }}" alt="" style="width: 100px;height: 100px;" id="piece-{{ obj.id }}">
         {% if index|get_module:5 %}
         <hr>
         {% endif %}

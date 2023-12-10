@@ -57,6 +57,9 @@ class PuzzleCheckSerializer(serializers.ModelSerializer):
         correct = self.get_correct_list(id_list, puzzle.row, puzzle.column)
         result = self.context.get("result")
 
+        print(result)
+        print(correct)
+        print(result == correct)
         if result != correct:
             raise serializers.ValidationError({"error": "Wrong ordering"})
         return attrs
