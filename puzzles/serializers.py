@@ -1,11 +1,18 @@
 from rest_framework import serializers
 from .models import Puzzle, PuzzleImage, PuzzleResult
+from django.core.files.images import ImageFile
 
 
 class PuzzleImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PuzzleImage
         fields = ("id", "image", )
+
+    def to_representation(self, instance):
+        repr_ = super().to_representation(instance)
+        repr_["width"] = instance.image.width
+        repr_["height"] = instance.image.height
+        return repr_
 
 
 class PuzzleSerializer(serializers.ModelSerializer):
