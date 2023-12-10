@@ -30,5 +30,6 @@ class PuzzleSubmitView(generics.CreateAPIView):
 from django.shortcuts import render
 def puzzle_detail_view(request, id):
     puzzle = Puzzle.objects.get(id=id)
-    context = {"puzzle": puzzle}
+    images = [(index+1, pzimage) for index, pzimage in enumerate(puzzle.puzzleimage_set.all())]
+    context = {"images": images, "row": range(puzzle.row), "column": range(puzzle.column)}
     return render(request, "index.html", context)

@@ -18,9 +18,10 @@ def create_puzzle_pieces(puzzle):
     # Loop through the image and cut it into pieces
     for i in range(puzzle.row):
         for j in range(puzzle.column):
+
             # Define the region to crop
-            left = i * piece_width
-            upper = j * piece_height
+            left = j * piece_width
+            upper = i * piece_height
             right = left + piece_width
             lower = upper + piece_height
 
@@ -35,6 +36,7 @@ def create_puzzle_pieces(puzzle):
             # Crop the image
             piece_image = original_image.crop((left, upper, right, lower))
             piece_image.save(piece_obj.image.path)
+            # piece_image.show()
 
     # Close the original image to free up resources
     original_image.close()

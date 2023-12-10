@@ -1,7 +1,11 @@
+{% load divider %}
+
 <h1>{{ puzzle.title }}</h1>
 <hr>
 
-{% for piece in puzzle.puzzleimage_set.all %}
-<img src="{{ piece.image.url }}" alt="" style="width: 100px;height: 100px;">
-<hr>
-{% endfor %}
+    {% for index, obj in images %}
+        <img src="{{ obj.image.url }}" alt="" style="width: 100px;height: 100px;">
+        {% if index|get_module:5 %}
+        <hr>
+        {% endif %}
+    {% endfor %}
