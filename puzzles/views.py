@@ -31,5 +31,5 @@ from django.shortcuts import render
 def puzzle_detail_view(request, id):
     puzzle = Puzzle.objects.get(id=id)
     images = [(index+1, pzimage) for index, pzimage in enumerate(puzzle.puzzleimage_set.all())]
-    context = {"images": images, "row": range(puzzle.row), "column": range(puzzle.column)}
+    context = {"images": images, "row": puzzle.row, "column": puzzle.column}
     return render(request, "index.html", context)
