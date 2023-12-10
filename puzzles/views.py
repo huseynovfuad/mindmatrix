@@ -25,3 +25,10 @@ class PuzzleSubmitView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({"is_ok": True}, status=201)
+
+
+from django.shortcuts import render
+def puzzle_detail_view(request, id):
+    puzzle = Puzzle.objects.get(id=id)
+    context = {"puzzle": puzzle}
+    return render(request, "index.html", context)
