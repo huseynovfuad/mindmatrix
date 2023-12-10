@@ -56,14 +56,7 @@ class PuzzleCheckSerializer(serializers.ModelSerializer):
         id_list = PuzzleImage.objects.filter(puzzle=puzzle).order_by("id").values_list("id", flat=True)
         correct = self.get_correct_list(id_list, puzzle.row, puzzle.column)
         result = self.context.get("result")
-        for i in result:
-            for j in i:
-                print(type(j))
 
-        print(result)
-        print(correct)
-        print(type(result), type(correct))
-        print(result == correct)
         if result != correct:
             raise serializers.ValidationError({"error": "Wrong ordering"})
         return attrs
